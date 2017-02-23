@@ -9,7 +9,7 @@ RUN \
 USER jhipster
 WORKDIR /home/jhipster/fullstack
 
-RUN ./mvnw -Pprod clean package \
+RUN ./mvnw -Pprod -DskipTests clean package \
   && mv /home/jhipster/fullstack/target/fullstack-1.0.0-SNAPSHOT.war /home/jhipster/fullstack/fullstack-1.0.0-SNAPSHOT.war \
   && rm -rf /home/jhipster/fullstack/target \
   && sh -c 'touch /home/jhipster/fullstack/fullstack-1.0.0-SNAPSHOT.war'
