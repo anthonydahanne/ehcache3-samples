@@ -1,4 +1,10 @@
-version: '2'
+version: '3'
+
+networks:
+  terracotta-net:
+# following line to uncomment when using a "real" Docker swarm, not Docker Swarm mode
+    driver: overlay
+
 services:
     demo-app:
         image: demo
@@ -15,7 +21,8 @@ services:
             - DEMO_GOOGLEAPIKEY # this value needs to be passed via an environment variable
             - DEMO_DARKSKYAPIKEY # this value needs to be passed via an environment variable
             - DEMO_BIOGRAPHIESREMOTELOCATION # this value needs to be passed via an environment variable
-
+        networks:
+            - terracotta-net
         ports:
             - 8080
     demo-postgresql:
